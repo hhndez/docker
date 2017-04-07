@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+platform=$(uname)
+
+if [ "$platform" == "Linux" ]; then
+  LD_LIBRARY_PATH=`dirname $0` `dirname $0`/phantomjs-linux "$@"
+elif [ "$platform" == "Darwin" ]; then
+  `dirname $0`/phantomjs-osx "$@"
+else
+  `dirname $0`/phantomjs.exe "$@"
+fi
+
+exit $?
